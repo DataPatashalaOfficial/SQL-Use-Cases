@@ -1,4 +1,4 @@
-1. Total Sales by Product
+1. ##Total Sales by Product
 
 SELECT ProductID, SUM(TotalAmount) AS TotalSales
 FROM SalesTransactions

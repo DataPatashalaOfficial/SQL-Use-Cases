@@ -1,8 +1,8 @@
 Here are 35   queries designed for Inventory Management using the datasets you provided, ranging from beginner to advanced levels. These queries will cover a variety of tasks including stock monitoring, supplier management, profit analysis, inventory forecasting, and more.
 
-**Beginner Level Queries:
+**Beginner Level Queries**:
 
-Query 1: Display all product information
+**Query 1**: Display all product information
 
 SELECT * FROM product_information;
 

@@ -1,6 +1,6 @@
 Certainly! Here are **20 SQL questions** that cover a range of **medium to hard** levels, based on the e-commerce datasets we have created. These questions will test advanced querying, aggregation, and analytical skills using the `product_information`, `customer_information`, `sales_transactions`, and `marketing_campaign` datasets.
 
-### **Medium Level SQL Questions**
+## **Medium Level SQL Questions**
 
 1. **Question 1:** Find the top 5 products that generated the highest total sales revenue.
    
@@ -202,8 +202,3 @@ Certainly! Here are **20 SQL questions** that cover a range of **medium to hard*
     JOIN customer_information ON sales_transactions.Customer_ID = customer_information.Customer_ID
     GROUP BY Customer_ID, Customer_Name
     HAVING Unique_Products_Purchased > 10;
-    ```
-
----
-
-These questions should provide a strong foundation for analyzing complex data using advanced SQL techniques. Let me know if you need more detailed solutions or explanations for any of these queries!

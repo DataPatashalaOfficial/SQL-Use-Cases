@@ -1,4 +1,4 @@
-Certainly! Here are **100 SQL queries** based on the **Marketing Campaign Effectiveness Analysis** datasets, divided into **easy**, **medium**, and **hard** levels. The queries will cover a range of analysis scenarios, including basic data exploration, campaign performance analysis, and advanced analytics.
+Certainly! Here are 30 SQL queries** based on the **Marketing Campaign Effectiveness Analysis** datasets, divided into **easy**, **medium**, and **hard** levels. The queries will cover a range of analysis scenarios, including basic data exploration, campaign performance analysis, and advanced analytics.
 
 ### **Easy Level Queries**
 

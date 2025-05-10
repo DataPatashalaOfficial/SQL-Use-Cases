@@ -1,3 +1,25 @@
+SQL Capstone Project: Airline Operations Analytics
+
+Project Description
+
+The Airline Operations Analytics capstone project is designed to deepen SQL proficiency by analyzing a comprehensive dataset of Delta Air Lines flights from December 6, 2018. Sourced from the attached CSV (untitled_report-dataset-dc11942a8bc1-2025-05-10-10-19-30.csv) and aligned with Mode.com's flights dataset, this project simulates real-world airline data analytics tasks. The dataset captures critical metrics such as flight times, delays, distances, and airport details, enabling insights into operational efficiency, delay patterns, and route performance.
+
+This project includes 100 SQL interview questions, spanning Medium to Very High difficulty levels, to prepare candidates for analytics and data engineering roles. The questions cover essential SQL concepts (filtering, grouping, joins), advanced techniques (window functions, CTEs, subqueries), and optimization strategies, reflecting 2025 industry trends. All SQL queries are provided in a separate file, flight_analysis_queries.sql, to facilitate execution and reference. The project avoids using temporary tables, ensuring compatibility with environments where such functionality is restricted.
+
+Dataset Description
+
+The dataset contains 100 rows of flight records for Delta Air Lines on December 6, 2018, with metrics like departure/arrival times, delays, and airport information. It is stored in the tutorial.flights table, accessible via Mode.com or a SQL database.
+
+
+
+
+
+
+
+
+
+
+
 -- Q1: List all flights with a departure delay greater than 30 minutes.
 SELECT flight_number, origin_airport, destination_airport, departure_delay
 FROM tutorial.flights

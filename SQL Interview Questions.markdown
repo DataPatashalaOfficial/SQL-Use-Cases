@@ -1,4 +1,4 @@
-# 50 Medium to High-Level SQL Interview Questions
+# SQL Capstone Project 2
 
 ## Question 1
 **Sample Data**  

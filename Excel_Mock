@@ -1,0 +1,165 @@
+Below are three sets of Excel interview questions based on the `Sales_data_Excel_Mock_1.xlsx` dataset, categorized into **Easy**, **Intermediate**, and **Expert** levels. Each set contains 5 questions, designed to progressively increase in difficulty while avoiding VBA or Macros. The questions leverage the dataset’s structure (columns: Transaction_ID, Order_Date, Customer_ID, Product_ID, Quantity, Sales_Amount, Discount, Profit, Sales_Channel) and focus on Excel formulas, functions, PivotTables, and data visualization suitable for sales data analysis.
+
+---
+
+### Easy Level: Basic Excel Skills
+These questions test foundational Excel knowledge, focusing on simple formulas, sorting, filtering, and basic charting.
+
+1. **Question**: How would you calculate the total Sales Amount for all transactions in the dataset using a single Excel formula?
+   - **Expected Answer**: Use the `SUM` function:
+     ```excel
+     =SUM(F:F)
+     ```
+     This sums all values in the Sales Amount column (F).
+
+2. **Question**: How would you sort the dataset by Order Date (column B) in ascending order to see the earliest transactions first?
+   - **Expected Answer**: 
+     - Select the entire dataset (A1:I210000).
+     - Go to Data > Sort.
+     - Choose `Order_Date` (column B) as the Sort by column and select `Oldest to Newest`.
+     - Click OK to sort the data.
+
+3. **Question**: How would you use Excel’s Filter feature to display only transactions from the E-commerce Sales Channel?
+   - **Expected Answer**: 
+     - Select the dataset (A1:I210000).
+     - Go to Data > Filter to add filter arrows to the headers.
+     - Click the filter arrow in the Sales_Channel column (I).
+     - Uncheck all options except `E-commerce` and click OK.
+
+4. **Question**: Create a formula to calculate the final Sales Amount after applying the Discount (stored as text, e.g., "10%") for a single transaction in row 2.
+   - **Expected Answer**: 
+     - Extract the discount percentage and apply it:
+       ```excel
+       =F2*(1-VALUE(LEFT(G2,LEN(G2)-1))/100)
+       ```
+     This multiplies the Sales Amount (F2) by (1 - Discount percentage converted to decimal).
+
+5. **Question**: How would you create a simple column chart to show the total Quantity sold for each Sales Channel?
+   - **Expected Answer**: 
+     - Create a PivotTable (Insert > PivotTable).
+     - Place `Sales_Channel` in Rows and `Quantity` in Values (set to Sum).
+     - Select the PivotTable output, then go to Insert > Charts > Column Chart.
+     - Add chart elements like title ("Quantity by Sales Channel") and axis labels.
+
+---
+
+### Intermediate Level: Data Manipulation and Analysis
+These questions require proficiency in intermediate Excel functions, PivotTables, and Conditional Formatting for deeper data analysis.
+
+1. **Question**: How would you use a PivotTable to show the average Profit by Sales Channel?
+   - **Expected Answer**: 
+     - Insert a PivotTable (Insert > PivotTable).
+     - Place `Sales_Channel` in the Rows area and `Profit` in the Values area.
+     - Change the Profit field to Average (click the dropdown in Values > Value Field Settings > Average).
+     - Format the result to display as currency for clarity.
+
+2. **Question**: Write a formula to flag transactions where the Sales Amount is above $1000 and the Quantity is at least 3. Place the result in a helper column.
+   - **Expected Answer**: 
+     ```excel
+     =IF(AND(F2>1000, E2>=3), "Yes", "No")
+     ```
+     Place this in a helper column (e.g., J2) and copy down. It returns "Yes" if both conditions are met, else "No".
+
+3. **Question**: How would you use Conditional Formatting to highlight transactions in the Distributor channel with a Profit below $100?
+   - **Expected Answer**: 
+     - Select the dataset (A2:I210000).
+     - Go to Home > Conditional Formatting > New Rule > Use a formula:
+       ```excel
+       =AND(I2="Distributor", H2<100)
+       ```
+     - Set a format (e.g., red fill) and apply. This highlights rows where Sales_Channel is Distributor and Profit is less than $100.
+
+4. **Question**: Calculate the total Sales Amount for transactions in 2024 using a formula, assuming Order_Date (column B) is in MM/DD/YY format.
+   - **Expected Answer**: 
+     ```excel
+     =SUMIFS(F:F, B:B, ">=01/01/24", B:B, "<=12/31/24")
+     ```
+     This sums Sales Amount (F) where Order_Date (B) falls within 2024.
+
+5. **Question**: How would you use `VLOOKUP` to find the Customer ID for a given Transaction ID (e.g., 10001)?
+   - **Expected Answer**: 
+     ```excel
+     =VLOOKUP(10001, A:C, 3, FALSE)
+     ```
+     This searches for Transaction ID 10001 in column A and returns the corresponding Customer ID from column C (third column in the range A:C). `FALSE` ensures an exact match.
+
+---
+
+### Expert Level: Advanced Functions and Data Insights
+These questions test advanced Excel skills, including complex formulas, dynamic arrays, and sophisticated PivotTable configurations for in-depth analysis.
+
+1. **Question**: Create a formula to calculate the year-over-year growth rate of total Sales Amount for the E-commerce channel between 2023 and 2024.
+   - **Expected Answer**: 
+     - Calculate total Sales Amount for E-commerce in 2023:
+       ```excel
+       =SUMIFS(F:F, I:I, "E-commerce", B:B, ">=01/01/23", B:B, "<=12/31/23")
+       ```
+     - Calculate for 2024:
+       ```excel
+       =SUMIFS(F:F, I:I, "E-commerce", B:B, ">=01/01/24", B:B, "<=12/31/24")
+       ```
+     - Compute growth rate:
+       ```excel
+       =((SUMIFS(F:F, I:I, "E-commerce", B:B, ">=01/01/24", B:B, "<=12/31/24") - SUMIFS(F:F, I:I, "E-commerce", B:B, ">=01/01/23", B:B, "<=12/31/23")) / SUMIFS(F:F, I:I, "E-commerce", B:B, ">=01/01/23", B:B, "<=12/31/23"))
+       ```
+     Format as a percentage to show the growth rate.
+
+2. **Question**: How would you use a PivotTable to show the top 5 Product IDs by total Sales Amount, but only for transactions with a Discount of 5% or less?
+   - **Expected Answer**: 
+     - Create a helper column to flag transactions with Discount <= 5%:
+       ```excel
+       =IF(VALUE(LEFT(G2,LEN(G2)-1))<=5, F2, 0)
+       ```
+     - Insert a PivotTable.
+     - Place `Product_ID` in Rows and the helper column in Values (set to Sum).
+     - Sort the PivotTable by Sum of Sales Amount in descending order (right-click > Sort > Sort Largest to Smallest).
+     - Filter to show only the top 5 (right-click on a Product ID > Filter > Top 10 > adjust to Top 5).
+
+3. **Question**: Write a formula using `INDEX` and `MATCH` to find the Order Date of the transaction with the highest Profit in the In-Store channel.
+   - **Expected Answer**: 
+     ```excel
+     =INDEX(B:B, MATCH(MAXIFS(H:H, I:I, "In-Store"), H:H, 0))
+     ```
+     `MAXIFS` finds the highest Profit for In-Store transactions. `MATCH` locates its position in the Profit column (H), and `INDEX` returns the corresponding Order Date from column B.
+
+4. **Question**: How would you use Excel’s `UNIQUE` and `TEXTJOIN` functions to create a comma-separated list of unique Customer IDs who made purchases in both 2023 and 2024?
+   - **Expected Answer**: 
+     - Extract unique Customer IDs for 2023:
+       ```excel
+       =UNIQUE(FILTER(C:C, (B:B>=DATE(2023,1,1))*(B:B<=DATE(2023,12,31))))
+       ```
+     - Extract unique Customer IDs for 2024:
+       ```excel
+       =UNIQUE(FILTER(C:C, (B:B>=DATE(2024,1,1))*(B:B<=DATE(2024,12,31))))
+       ```
+     - Use `FILTER` to find common Customer IDs (assuming the 2023 list is in J2:Jn and 2024 in K2:Kn):
+       ```excel
+       =FILTER(J2:Jn, ISNUMBER(MATCH(J2:Jn, K2:Kn, 0)))
+       ```
+     - Combine into a comma-separated list:
+       ```excel
+       =TEXTJOIN(", ", TRUE, FILTER(J2:Jn, ISNUMBER(MATCH(J2:Jn, K2:Kn, 0))))
+       ```
+
+5. **Question**: Design a dynamic chart to show the monthly Profit trend for each Sales Channel in 2024, with the ability to filter by Quantity (e.g., Quantity >= 2).
+   - **Expected Answer**: 
+     - Create a PivotTable:
+       - Place `Order_Date` (grouped by Months and Years) in Rows.
+       - Place `Sales_Channel` in Columns.
+       - Place `Profit` in Values (set to Sum).
+       - Place `Quantity` in Filters and set to >= 2.
+       - Filter Year to 2024.
+     - Insert a Line Chart (Insert > Charts > Line):
+       - Select the PivotTable data (months as X-axis, Profit by channel as series).
+       - Add a chart title ("Monthly Profit by Sales Channel (2024)") and axis labels.
+       - Use a PivotChart to ensure dynamic updates when filters change.
+
+---
+
+### Notes
+- **Easy Level**: Focuses on basic operations (SUM, sorting, filtering, simple charts) to ensure accessibility for beginners while using the dataset’s context.
+- **Intermediate Level**: Introduces PivotTables, Conditional Formatting, and intermediate functions (VLOOKUP, IF, AND) to test data manipulation skills.
+- **Expert Level**: Challenges users with advanced functions (INDEX, MATCH, UNIQUE, TEXTJOIN), complex PivotTable configurations, and dynamic visualizations for sophisticated analysis.
+- All questions are tailored to the dataset’s structure and avoid VBA/Macros, aligning with your requirements.
+- The questions assume familiarity with Excel 365/2021 features (e.g., UNIQUE, FILTER) for Expert level, but alternatives like VLOOKUP or PivotTables can be used in older versions.
+- The dataset’s scale (210,000 rows) is considered, ensuring formulas and methods are practical for large datasets.
